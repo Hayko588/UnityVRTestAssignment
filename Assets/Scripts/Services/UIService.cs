@@ -12,11 +12,12 @@ namespace Services
     public interface IUIService
     {
         IReadOnlyReactiveProperty<ModelConfig> OnModelSelected { get; }
-        // IObservable<Color> OnColorSelected { get; }
+        IReadOnlyReactiveProperty<Color> OnColorSelected { get; }
+
         // IObservable<string> OnAnimationSelected { get; }
-        //
+        
         void SelectModel(ModelConfig modelConfig);
-        // void ShowColorPicker();
+        void SelectColor(Color color);
         // void ShowAnimationMenu(List<string> animationNames);
     }
 
@@ -25,17 +26,21 @@ namespace Services
         // private readonly Subject<Color> _colorSelectedSubject = new Subject<Color>();
         // private readonly Subject<string> _animationSelectedSubject = new Subject<string>();
 
-        private Subject<ModelConfig> _onModelSelected = new();
-        public IReadOnlyReactiveProperty<ModelConfig> OnModelSelected => _onModelSelected.ToReactiveProperty();
+        private Subject<ModelConfig> _modelSelectedSubject = new();
+        private Subject<Color> _colorSelectedSubject = new();
+
+        public IReadOnlyReactiveProperty<ModelConfig> OnModelSelected => _modelSelectedSubject.ToReactiveProperty();
+        public IReadOnlyReactiveProperty<Color> OnColorSelected => _colorSelectedSubject.ToReactiveProperty();
         
-        private void Awake()
-        {
-            
-        }
 
         public void SelectModel(ModelConfig modelConfig)
         {
-            _onModelSelected?.OnNext(modelConfig);
+            _modelSelectedSubject?.OnNext(modelConfig);
+        }
+
+        public void SelectColor(Color color)
+        {
+            _colorSelectedSubject?.OnNext(color);
         }
     }
 }

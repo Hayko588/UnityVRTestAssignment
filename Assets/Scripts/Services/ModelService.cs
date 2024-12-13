@@ -7,40 +7,39 @@ namespace Services
 {
     public interface IModelService
     {
-        GameObject LoadModel(ModelConfig modelConfig);
-        Transform GetModelTransform();
+        IReadOnlyReactiveProperty<ModelExhibit> OnModelChanged { get; }
+        void LoadModel(ModelConfig modelConfig);
     }
 
     public class ModelService : MonoBehaviour, IModelService
     {
         [SerializeField] private Transform _origin;
 
-        [Inject] private IUIService _uiService;
+        private IUIService _uiService;
 
-        private int _selectedModelIndex = 0;
-        private GameObject _currentModel;
-        private Transform _modelTransform;
+        private ReactiveProperty<ModelExhibit> _currentModel = new();
+        public IReadOnlyReactiveProperty<ModelExhibit> OnModelChanged => _currentModel;
 
-        private void Awake()
+        [Inject]
+        public void Construct(IUIService uiService)
         {
+            _uiService = uiService;
+
             _uiService
                 .OnModelSelected
                 .Subscribe(model => LoadModel(model))
                 .AddTo(this);
         }
 
-        public Transform GetModelTransform() => _modelTransform;
-
-        public GameObject LoadModel(ModelConfig modelConfig)
+        public void LoadModel(ModelConfig modelConfig)
         {
-            if (_currentModel != null)
+            if (_currentModel.Value != null)
             {
-                Destroy(_currentModel);
+                Destroy(_currentModel.Value.gameObject);
+                _currentModel.Value = null;
             }
 
-            _currentModel = Instantiate(modelConfig.Prefab, _origin.position, Quaternion.identity);
-            _modelTransform = _currentModel.transform;
-            return _currentModel;
+            _currentModel.Value = Instantiate(modelConfig.Prefab, _origin.position, Quaternion.identity);
         }
     }
 }

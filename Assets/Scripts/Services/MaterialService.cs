@@ -1,22 +1,50 @@
+using System;
+using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Services
 {
-    public class MaterialService : IMaterialService
+    public interface IMaterialService
     {
-        private Renderer _currentRenderer;
+        void ChangeColor(Color color);
+    }
 
-        public void SetRenderer(Renderer renderer)
+    public class MaterialService : MonoBehaviour, IMaterialService
+    {
+        private IUIService _uiService;
+        private IModelService _modelService;
+
+        private ModelExhibit _currentModel;
+
+        [Inject]
+        public void Construct(IUIService uiService, IModelService modelService)
         {
-            _currentRenderer = renderer;
+            _uiService = uiService;
+            _modelService = modelService;
+        }
+
+        private void Start()
+        {
+            _modelService
+                .OnModelChanged
+                .Subscribe(SetModel)
+                .AddTo(this);
+
+            _uiService
+                .OnColorSelected
+                .Subscribe(ChangeColor)
+                .AddTo(this);
+        }
+
+        private void SetModel(ModelExhibit modelExhibit)
+        {
+            _currentModel = modelExhibit;
         }
 
         public void ChangeColor(Color color)
         {
-            if (_currentRenderer != null)
-            {
-                _currentRenderer.material.color = color;
-            }
+            _currentModel.SetBaseColor(color);
         }
     }
 }

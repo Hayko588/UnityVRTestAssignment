@@ -6,7 +6,7 @@ using UnityEngine;
 public class ModelConfig
 {
     public string ModelName;
-    public GameObject Prefab;
+    public ModelExhibit Prefab;
     public List<Motion> Animations;
 }
 
