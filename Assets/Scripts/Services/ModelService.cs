@@ -1,3 +1,5 @@
+using System;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -13,11 +15,19 @@ namespace Services
     {
         [SerializeField] private Transform _origin;
 
-        [Inject] private ModelRepository _modelRepository;
+        [Inject] private IUIService _uiService;
 
         private int _selectedModelIndex = 0;
         private GameObject _currentModel;
         private Transform _modelTransform;
+
+        private void Awake()
+        {
+            _uiService
+                .OnModelSelected
+                .Subscribe(model => LoadModel(model))
+                .AddTo(this);
+        }
 
         public Transform GetModelTransform() => _modelTransform;
 
@@ -25,7 +35,7 @@ namespace Services
         {
             if (_currentModel != null)
             {
-                //Destroy(_currentModel);
+                Destroy(_currentModel);
             }
 
             _currentModel = Instantiate(modelConfig.Prefab, _origin.position, Quaternion.identity);

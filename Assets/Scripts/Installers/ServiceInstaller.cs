@@ -13,9 +13,13 @@ namespace Installers
             Container.BindInterfacesAndSelfTo<MaterialService>().AsSingle();
             Container.BindInterfacesAndSelfTo<AnimationService>().AsSingle();
             Container.BindInterfacesAndSelfTo<InputService>().AsSingle();
-            Container.BindInterfacesAndSelfTo<UIService>().AsSingle();
-            Container.BindInterfacesAndSelfTo<ModelService>()
-                .FromInstance(_modelService).AsSingle();
+            Container
+                .BindInterfacesAndSelfTo<UIService>()
+                .AsSingle();
+            Container
+                .BindInterfacesAndSelfTo<ModelService>()
+                .FromInstance(_modelService)
+                .AsSingle();
         }
     }
 }
