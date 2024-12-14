@@ -243,6 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetMaterial: {fileID: -6887971672806780246, guid: daeeaf360ef492e4a8981837641b5682, type: 3}
+  _animationComponent: {fileID: 579632102159449322}
 --- !u!1001 &7267017229993938568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -335,6 +336,10 @@ PrefabInstance:
       propertyPath: m_PlayAutomatically
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1381789280324619678, guid: daeeaf360ef492e4a8981837641b5682, type: 3}
+      propertyPath: m_Animations.Array.size
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 2242888416370347441, guid: daeeaf360ef492e4a8981837641b5682, type: 3}
       propertyPath: m_Name
       value: RobotExpressive
@@ -392,6 +397,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -3199799093341109342, guid: daeeaf360ef492e4a8981837641b5682, type: 3}
+--- !u!111 &579632102159449322 stripped
+Animation:
+  m_CorrespondingSourceObject: {fileID: -1381789280324619678, guid: daeeaf360ef492e4a8981837641b5682, type: 3}
+  m_PrefabInstance: {fileID: 7267017229993938568}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2932839484341369664 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3717114202187975224, guid: daeeaf360ef492e4a8981837641b5682, type: 3}

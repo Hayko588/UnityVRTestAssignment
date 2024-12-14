@@ -1,9 +1,11 @@
+using System.Linq;
 using Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 using UniRx;
+using UniRx.Triggers;
 
 namespace UI
 {
@@ -35,19 +37,36 @@ namespace UI
                 .OnModelSelected
                 .Subscribe(model =>
                 {
-                    
+                    _animationsDropdown.ClearOptions();
+                    var options = model
+                        .Animations
+                        .Select(a => a.name)
+                        .ToList();
+                    _animationsDropdown.AddOptions(options);
                 })
                 .AddTo(this);
-            
+
             _modelService
-                .OnModelChanged
-                .Skip(1)
+                .CurrentModel
                 .Subscribe(model =>
                 {
                     _selectedColor = model.GetBaseColor();
                     Color.RGBToHSV(_selectedColor, out float H, out float S, out float V);
                     _colorSlider.value = H;
                 })
+                .AddTo(this);
+
+            _animationsDropdown
+                .OnSelectAsObservable()
+                .Subscribe(_ =>
+                {
+                    _uiService.SelectAnimation(_animationsDropdown.options[_animationsDropdown.value].text);
+                })
+                .AddTo(this);
+
+            _animationToggle
+                .OnValueChangedAsObservable()
+                .Subscribe(_uiService.PlayAnimation)
                 .AddTo(this);
         }
     }

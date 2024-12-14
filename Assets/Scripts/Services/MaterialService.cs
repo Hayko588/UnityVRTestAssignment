@@ -7,7 +7,7 @@ namespace Services
 {
     public interface IMaterialService
     {
-        void ChangeColor(Color color);
+        
     }
 
     public class MaterialService : MonoBehaviour, IMaterialService
@@ -27,7 +27,8 @@ namespace Services
         private void Start()
         {
             _modelService
-                .OnModelChanged
+                .CurrentModel
+                .Skip(1)
                 .Subscribe(SetModel)
                 .AddTo(this);
 
@@ -42,7 +43,7 @@ namespace Services
             _currentModel = modelExhibit;
         }
 
-        public void ChangeColor(Color color)
+        private void ChangeColor(Color color)
         {
             _currentModel.SetBaseColor(color);
         }

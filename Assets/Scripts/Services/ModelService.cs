@@ -7,7 +7,8 @@ namespace Services
 {
     public interface IModelService
     {
-        IReadOnlyReactiveProperty<ModelExhibit> OnModelChanged { get; }
+        ModelConfig CurrentModelConfig { get; }
+        IReactiveProperty<ModelExhibit> CurrentModel { get; }
         void LoadModel(ModelConfig modelConfig);
     }
 
@@ -17,9 +18,10 @@ namespace Services
 
         private IUIService _uiService;
 
-        private ReactiveProperty<ModelExhibit> _currentModel = new();
-        public IReadOnlyReactiveProperty<ModelExhibit> OnModelChanged => _currentModel;
-
+        public IReactiveProperty<ModelExhibit> CurrentModel { get; private set; } = new ReactiveProperty<ModelExhibit>();
+        
+        public ModelConfig CurrentModelConfig { get; private set; }
+        
         [Inject]
         public void Construct(IUIService uiService)
         {
@@ -33,13 +35,13 @@ namespace Services
 
         public void LoadModel(ModelConfig modelConfig)
         {
-            if (_currentModel.Value != null)
+            if (CurrentModel.Value != null)
             {
-                Destroy(_currentModel.Value.gameObject);
-                _currentModel.Value = null;
+                Destroy(CurrentModel.Value.gameObject);
             }
 
-            _currentModel.Value = Instantiate(modelConfig.Prefab, _origin.position, Quaternion.identity);
+            CurrentModelConfig = modelConfig;
+            CurrentModel.Value = Instantiate(modelConfig.Prefab, _origin.position, Quaternion.identity);
         }
     }
 }

@@ -13,25 +13,31 @@ namespace Services
     {
         IReadOnlyReactiveProperty<ModelConfig> OnModelSelected { get; }
         IReadOnlyReactiveProperty<Color> OnColorSelected { get; }
-
-        // IObservable<string> OnAnimationSelected { get; }
+        IReadOnlyReactiveProperty<string> OnAnimationSelected { get; }
+        IReadOnlyReactiveProperty<bool> OnAnimationPlay { get; }
         
         void SelectModel(ModelConfig modelConfig);
         void SelectColor(Color color);
-        // void ShowAnimationMenu(List<string> animationNames);
+        void SelectAnimation(string clipName);
+        void PlayAnimation(bool play);
     }
 
     public class UIService : IUIService
     {
-        // private readonly Subject<Color> _colorSelectedSubject = new Subject<Color>();
-        // private readonly Subject<string> _animationSelectedSubject = new Subject<string>();
-
         private Subject<ModelConfig> _modelSelectedSubject = new();
         private Subject<Color> _colorSelectedSubject = new();
+        private Subject<string> _animationSelectedSubject = new();
+        private Subject<bool> _animationPlaySubject = new();
 
         public IReadOnlyReactiveProperty<ModelConfig> OnModelSelected => _modelSelectedSubject.ToReactiveProperty();
         public IReadOnlyReactiveProperty<Color> OnColorSelected => _colorSelectedSubject.ToReactiveProperty();
-        
+
+        public IReadOnlyReactiveProperty<string> OnAnimationSelected =>
+            _animationSelectedSubject.ToReactiveProperty();
+
+        public IReadOnlyReactiveProperty<bool> OnAnimationPlay =>
+            _animationPlaySubject.ToReactiveProperty();
+
 
         public void SelectModel(ModelConfig modelConfig)
         {
@@ -41,6 +47,16 @@ namespace Services
         public void SelectColor(Color color)
         {
             _colorSelectedSubject?.OnNext(color);
+        }
+
+        public void SelectAnimation(string clipName)
+        {
+            _animationSelectedSubject?.OnNext(clipName);
+        }
+
+        public void PlayAnimation(bool play)
+        {
+            _animationPlaySubject?.OnNext(play);
         }
     }
 }

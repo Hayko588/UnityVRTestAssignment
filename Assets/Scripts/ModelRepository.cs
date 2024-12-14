@@ -7,7 +7,7 @@ public class ModelConfig
 {
     public string ModelName;
     public ModelExhibit Prefab;
-    public List<Motion> Animations;
+    public List<AnimationClip> Animations;
 }
 
 [CreateAssetMenu(fileName = "ModelRepository", menuName = "VR/Model Repository", order = 0)]

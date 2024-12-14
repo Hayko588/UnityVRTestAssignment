@@ -4,8 +4,10 @@ public class ModelExhibit : MonoBehaviour
 {
     private static readonly int ColorProperty = Shader.PropertyToID("_BaseColor");
     [SerializeField] private Material _targetMaterial;
+    [SerializeField] private Animation _animationComponent;
 
     public Material TargetMaterial => _targetMaterial;
+    public Animation AnimationComponent => _animationComponent;
 
     public Color GetBaseColor()
     {
