@@ -242,7 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e350ec2d3c2d418ea61560c9b553b495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetMaterial: {fileID: 471910260553246808, guid: ffdf6ef8b6c67b547a4b795cc2e826a2, type: 3}
+  _rendererRoot: {fileID: 7759883068455021621}
+  _animationComponent: {fileID: 0}
 --- !u!1001 &7762973559184871599
 PrefabInstance:
   m_ObjectHideFlags: 0
