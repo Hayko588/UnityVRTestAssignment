@@ -1,19 +1,26 @@
+using System;
+using System.Linq;
 using UnityEngine;
 
 public class ModelExhibit : MonoBehaviour
 {
-    private static readonly int ColorProperty = Shader.PropertyToID("_BaseColor");
-    [SerializeField] private Material _targetMaterial;
+    [SerializeField] private Transform _rendererRoot;
     [SerializeField] private Animation _animationComponent;
 
-    public Material TargetMaterial => _targetMaterial;
+    private Renderer _renderer;
+
     public Animation AnimationComponent => _animationComponent;
+
+    private void Awake()
+    {
+        _renderer = _rendererRoot.GetComponents<Renderer>().First();
+    }
 
     public Color GetBaseColor()
     {
-        if (_targetMaterial.HasProperty(ColorProperty))
+        if (_renderer)
         {
-            return _targetMaterial.GetColor(ColorProperty);
+            return _renderer.material.color;
         }
         else
         {
@@ -23,9 +30,9 @@ public class ModelExhibit : MonoBehaviour
 
     public void SetBaseColor(Color color)
     {
-        if (_targetMaterial.HasProperty(ColorProperty))
+        if (_renderer)
         {
-            _targetMaterial.SetColor(ColorProperty, color);
+            _renderer.material.color = color;
         }
     }
 }

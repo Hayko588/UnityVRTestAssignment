@@ -28,7 +28,6 @@ namespace Services
         {
             _modelService
                 .CurrentModel
-                .Skip(1)
                 .Subscribe(SetModel)
                 .AddTo(this);
 

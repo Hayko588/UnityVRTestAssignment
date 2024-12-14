@@ -52,11 +52,9 @@ namespace Services
                 .CurrentModelConfig
                 .Animations
                 .First(a => a.name == clipName);
-            Debug.LogError(clip.name);
-            bool isPlay = _currentAnimationComponent.isPlaying;
-            _currentAnimationComponent.Stop();
+
             _currentAnimationComponent.clip = clip;
-            if (isPlay)
+            if (_currentAnimationComponent.isPlaying)
             {
                 _currentAnimationComponent.Play();
             }
