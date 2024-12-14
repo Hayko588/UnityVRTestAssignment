@@ -6,7 +6,7 @@ namespace UI
 {
     public class ModelItemUI : MonoBehaviour
     {
-        [SerializeField] private Image _image;
+        [SerializeField] private RawImage _rawImage;
 
         public ModelConfig ModelConfig { get; private set; }
 
@@ -14,8 +14,9 @@ namespace UI
         {
             ModelConfig = modelConfig;
 
-            var texture = AssetPreview.GetAssetPreview(modelConfig.Prefab.gameObject);
-            _image.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
+            // var texture = AssetPreview.GetAssetPreview(modelConfig.Prefab.gameObject);
+            // if (texture == null) return;
+            // _image.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
         }
     }
 }

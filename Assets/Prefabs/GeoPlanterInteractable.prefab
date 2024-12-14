@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5487229995633581383}
   - component: {fileID: 323329262621633171}
   - component: {fileID: 3142399072010596956}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GeoPlanterInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,6 +252,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6421448023756155710}
     m_Modifications:
+    - target: {fileID: -5686862221531976087, guid: f33d6aae5259916409f898a0be3efac7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -3708204967666984407, guid: f33d6aae5259916409f898a0be3efac7, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.049999997
@@ -271,6 +275,14 @@ PrefabInstance:
     - target: {fileID: -3095043042932597395, guid: f33d6aae5259916409f898a0be3efac7, type: 3}
       propertyPath: m_Name
       value: GeoPlanter
+      objectReference: {fileID: 0}
+    - target: {fileID: -3095043042932597395, guid: f33d6aae5259916409f898a0be3efac7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -875058446648515708, guid: f33d6aae5259916409f898a0be3efac7, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6125924788026716233, guid: f33d6aae5259916409f898a0be3efac7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -311,6 +323,10 @@ PrefabInstance:
     - target: {fileID: 6125924788026716233, guid: f33d6aae5259916409f898a0be3efac7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8685792419879137665, guid: f33d6aae5259916409f898a0be3efac7, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
