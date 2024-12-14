@@ -24,8 +24,8 @@ namespace UI
 
         private void Awake()
         {
-            CreateModelItems();
             Subscribe();
+            CreateModelItems();
         }
 
         private void Subscribe()

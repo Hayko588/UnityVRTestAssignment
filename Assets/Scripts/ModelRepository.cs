@@ -7,6 +7,7 @@ public class ModelConfig
 {
     public string ModelName;
     public ModelExhibit Prefab;
+    public Sprite PreviewImage;
     public List<AnimationClip> Animations;
 }
 

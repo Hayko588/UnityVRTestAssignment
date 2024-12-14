@@ -53,8 +53,10 @@ namespace Services
                 .Animations
                 .First(a => a.name == clipName);
 
+            bool isPlay = _currentAnimationComponent.isPlaying;
+            _currentAnimationComponent.Stop();
             _currentAnimationComponent.clip = clip;
-            if (_currentAnimationComponent.isPlaying)
+            if (isPlay)
             {
                 _currentAnimationComponent.Play();
             }

@@ -15,9 +15,11 @@ MonoBehaviour:
   Models:
   - ModelName: Chair
     Prefab: {fileID: 5703387028361611432, guid: 16656a73176986d4cbce5652ffd65a8e, type: 3}
+    PreviewImage: {fileID: 21300000, guid: 35b87246dc820e046b11cffa9a6d0954, type: 3}
     Animations: []
   - ModelName: RobotExpressive
     Prefab: {fileID: 8672277380559504382, guid: ae63dea10385dc0429479682b1bdecd1, type: 3}
+    PreviewImage: {fileID: 21300000, guid: 6b5f3d54fd88017498d196f58027db3b, type: 3}
     Animations:
     - {fileID: 3723279654833134349, guid: daeeaf360ef492e4a8981837641b5682, type: 3}
     - {fileID: -4669247909627572057, guid: daeeaf360ef492e4a8981837641b5682, type: 3}
@@ -35,7 +37,9 @@ MonoBehaviour:
     - {fileID: 4766017513214396743, guid: daeeaf360ef492e4a8981837641b5682, type: 3}
   - ModelName: GeoPlanter
     Prefab: {fileID: 3142399072010596956, guid: c37d616732e993c4585bde0e41c5a679, type: 3}
+    PreviewImage: {fileID: 21300000, guid: c6e57860ec418ea468ad4d7ee920f085, type: 3}
     Animations: []
   - ModelName: Mixer
     Prefab: {fileID: 1693309501368289028, guid: 153b15ebf578fed4c8010c0a6004da91, type: 3}
+    PreviewImage: {fileID: 21300000, guid: 6c91ce8e39c992a45ad9736b32a59942, type: 3}
     Animations: []
