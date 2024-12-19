@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3039265312384230590}
   - component: {fileID: 3629929113398966392}
   - component: {fileID: 1693309501368289028}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: MixerInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3934277425902584047, guid: ffdf6ef8b6c67b547a4b795cc2e826a2, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3162040590056602, guid: ffdf6ef8b6c67b547a4b795cc2e826a2, type: 3}
       propertyPath: m_LocalScale.x

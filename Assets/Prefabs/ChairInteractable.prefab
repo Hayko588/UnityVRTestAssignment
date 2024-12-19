@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7724558212851838671}
   - component: {fileID: 3356601020310001486}
   - component: {fileID: 5703387028361611432}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ChairInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -218384324839387234, guid: 6d7968b7b3ac4bc45965594642636707, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
